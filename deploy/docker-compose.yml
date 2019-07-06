@@ -50,14 +50,14 @@ services:
       - zookeeper-2
       - zookeeper-3
     ports:
-      - 9091:29092
+      - 9091:9091
     # logging:
     #   driver: none
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
       # KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9091
       # KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       # KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       # KAFKA_CREATE_TOPICS: "test-topic:1:1"
@@ -70,13 +70,13 @@ services:
       - zookeeper-2
       - zookeeper-3
     ports:
-      - 9092:29092
+      - 9092:9092
     # logging:
     #   driver: none
     environment:
       KAFKA_BROKER_ID: 2
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092
 
   kafka-3:
     image: confluentinc/cp-kafka:latest
@@ -86,10 +86,10 @@ services:
       - zookeeper-2
       - zookeeper-3
     ports:
-      - 9093:29092
+      - 9093:9093
     # logging:
     #   driver: none
     environment:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-3:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-3:9093
