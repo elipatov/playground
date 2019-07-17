@@ -108,7 +108,8 @@ object WordCountScalaExample extends App {
     .flatMapValues(textLine => textLine.toLowerCase.split("\\W+"))
     .groupBy((_, word) => word)
     .count()
-  wordCounts.toStream.to("streams-wordcount-output")
+  val outStream: KStream[String, Long] = wordCounts.toStream
+  outStream.to("streams-wordcount-output")
 
   val streams: KafkaStreams = new KafkaStreams(builder.build(), config)
 
@@ -122,7 +123,7 @@ object WordCountScalaExample extends App {
   // Thus in a production scenario you typically do not want to clean up always as we do here but rather only when it
   // is truly needed, i.e., only under certain conditions (e.g., the presence of a command line flag for your app).
   // See `ApplicationResetExample.java` for a production-like example.
-  streams.cleanUp()
+  //streams.cleanUp()
 
   streams.start()
 
