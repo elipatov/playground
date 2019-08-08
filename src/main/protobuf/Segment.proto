@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package elipatov;
+
+option java_package = "elipatov.contracts";
+option java_multiple_files = true;
+
+message Segment {
+  required uint32 id = 1;
+  required string name = 2;
+  repeated string DataUsagePermissions = 3;
+
+}
