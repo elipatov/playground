@@ -11,7 +11,8 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf",
       scalaTest % Test,
-      "org.apache.kafka" %% "kafka-streams-scala" % "2.3.0"
+      "org.apache.kafka" %% "kafka-streams-scala" % "2.3.0",
+      "com.typesafe" % "config" % "1.3.4"
     ),
     PB.targets in Compile := Seq(scalapb.gen(flatPackage = true) -> (sourceManaged in Compile).value)
   )
